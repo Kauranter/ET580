@@ -1,16 +1,16 @@
 // s. trowbridge 2024
 #include <iostream>
 
-class Person {
+class Person{
 public:                                             // external access requires a public access modifier
     std::string name;                           
     int age;                                    
 };
-void print(Person &p)                           
-{
+
+
+void print(Person &p){
     std::cout << p.name << " " << p.age << "\n";
 }
-
 int main() {
     std::cout << std::endl;
 
