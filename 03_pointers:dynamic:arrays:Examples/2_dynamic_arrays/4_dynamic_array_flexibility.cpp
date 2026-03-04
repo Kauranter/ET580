@@ -5,12 +5,13 @@ int main()
 {
     std::cout << std::endl;
 
-    int size;                       
+    int size; 
+
     std::cout << "Enter size: ";
     std::cin >> size;
     std::cout << "\n";
 
-    int *a = new int[size];                         // size decided at runtime instead of compile time
+    int *a = new int[size];                             // size of a dynamic array is decided at runtime instead of compile time
 
     for(int i=0; i<size; ++i) { 
         std::cout << a[i] << " " << &(a[i]) << "\n";

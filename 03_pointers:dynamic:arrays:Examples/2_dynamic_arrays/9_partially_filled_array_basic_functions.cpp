@@ -1,7 +1,8 @@
-// S. Trowbridge 2024
+// S. Trowbridge 2026
 #include <iostream>
+#include <cassert>                                          // include cassert when using assertions
 
-void print(int *a, int size)                  
+void print(int *a, const int &size)                  
 {
     for(int i=0; i<size; ++i) {         
         std::cout << a[i] << " ";       
@@ -20,9 +21,9 @@ void print(int *a, int size)
     10 20 30 40 50 >60< 0 0 0 0                             // store 60 at index size
     size == 6                                               // increment size       
 */
-void push_back(int *a, int capacity, int &size, int value)  // pass size by reference
+void push_back(int *a, const int &capacity, int &size, int value)  // pass size by reference (size should be modified in main and in push_back if a value is added)
 { 
-    if(size == capacity) { return; }                        // if the array is full: exit          
+    assert(size >=0 && size < capacity);                    // assert: terminate program if size is invalid  
     a[size] = value;                                        // store value at the end of the array
     ++size;                                                 // increment size
 }
@@ -38,10 +39,10 @@ void push_back(int *a, int capacity, int &size, int value)  // pass size by refe
     10 20 30 40 50 0 0 0 0 0        
     size == 4                                               // size decremented: 50 is no longer accessible as part of the array data (it is garbage)
 */
-void pop_back(int &size)                                    // pass size by reference
+void pop_back(int &size)                                    // pass size by reference (size should be modified in main and in pop_back if a value is removed)
 {
-    if( size == 0 ) { return; }                             // if array has data, decrement size (the original last value is now garbage)         
-    --size;
+    assert(size > 0);                                       // assert: terminate program if array is empty  
+    --size;                                                 // decrement size (the original last value is now garbage)
 }
 
 int main() {
@@ -55,7 +56,7 @@ int main() {
     push_back(nums, CAPACITY, size, 60);                    // size incremented because of pass by reference
     push_back(nums, CAPACITY, size, 70);                    // size incremented because of pass by reference
     print(nums, size);
-    pop_back(size);                                         // size decremented because of pass by reference
+    pop_back(size);                                         // size decremented because of pass by reference                      
     print(nums, size);
 
     std::cout << std::endl;    

@@ -1,7 +1,7 @@
-// S. Trowbridge 2024
+// S. Trowbridge 2026
 #include <iostream>
 
-void print(int *p, int rows, int cols) 
+void print(int *p, const int &rows, const int &cols) 
 { 
     for(int i=0; i<rows; ++i) {
         for(int j=0; j<cols; ++j) {
@@ -11,7 +11,7 @@ void print(int *p, int rows, int cols)
     }
     std::cout << "\n";
 }
-void printMem(int *p, int rows, int cols) 
+void printMem(int *p, const int &rows, const int &cols) 
 { 
     for(int i=0; i<rows; ++i) {
         for(int j=0; j<cols; ++j) {
