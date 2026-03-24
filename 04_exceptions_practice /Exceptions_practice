@@ -1,0 +1,30 @@
+#include <iostream>
+ 
+void push_back(int *a, int capacity, int &size, int val)
+
+{
+    assert(size <=capacity);
+    a[size++] = val;
+}
+
+int main()
+{
+    std::cout << std::endl;
+
+    const int CAPACITY = 3;
+    int size=0;
+    int *a = new int[CAPACITY];
+
+    push_back(a, CAPACITY, size, 10);
+    push_back(a, CAPACITY, size, 20);
+    push_back(a, CAPACITY, size, 30);
+    push_back(a, CAPACITY, size, 40);
+
+    print(a, size);
+
+    delete [] a;
+
+    std::cout << std::endl;
+
+    return 0;
+}
